@@ -16,12 +16,12 @@
         <!-- header section start -->
         <section id="header">
             <div class="container">
-                <h1 class="text-center">Welcome to Phone Hunter</h1>
+                <h1 class="text-center py-5">Welcome to Phone Hunter</h1>
 
                 <!-- search section start -->
                 <div class="input-group mb-3 m-auto" style="width: 500px">
                     <input id="inputField" type="text" class="form-control" placeholder="Enter Phone Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                    <button class="input-group-text" id="btnSearch">Search</button>
+                    <button class="input-group-text btn btn-info" id="btnSearch">Search</button>
                 </div>
                 <!-- search section end -->
             </div>
@@ -29,10 +29,24 @@
         <!-- header section end -->
 
         <!-- all_phones section start -->
-        <section id="all_phones">
+        <section id="all_phones" class="mt-5">
             <div class="container">
                 <div id="phones_container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
+                <!-- no phone found message -->
                 <h3 id="no_phone_found_message" class="text-warning text-center pt-5 mt-3 d-none">No Phone Found</h3>
+
+                <!-- load spinner -->
+                <div id="load_spinner" style="height: 500px" class="d-flex justify-content-center align-item-center d-none">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- show all phones -->
+                <div id="show_all" class="text-center d-none">
+                    <button id="btn_show_all" class="btn btn-primary">Show All</button>
+                </div>
             </div>
         </section>
         <!-- all_phones section end -->

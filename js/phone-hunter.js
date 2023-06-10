@@ -1,17 +1,23 @@
 // load all phones
-const loadPhones = async (searchText) => {
+const loadPhones = async (searchText, dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayLoadPhones(data.data);
+    displayLoadPhones(data.data, dataLimit);
 };
 // display all phones
-const displayLoadPhones = (phones) => {
+const displayLoadPhones = (phones, dataLimit) => {
     const phonesContainer = document.getElementById("phones_container");
     phonesContainer.innerText = "";
 
     // 10 phones show
-    phones = phones.slice(0, 10);
+    const btnShowAll = document.getElementById("show_all");
+    if (dataLimit && phones.length > 10) {
+        phones = phones.slice(0, 10);
+        btnShowAll.classList.remove("d-none");
+    } else {
+        btnShowAll.classList.add("d-none");
+    }
 
     // no phone found message
     const noPhoneMessage = document.getElementById("no_phone_found_message");
@@ -38,15 +44,33 @@ const displayLoadPhones = (phones) => {
         `;
         phonesContainer.appendChild(phonesDiv);
     });
+    //loder end
+    toggleSpinner(false);
 };
-
-// search phones
-document.getElementById("btnSearch").addEventListener("click", function () {
+const processSearch = (dataLimit) => {
+    //loder start
+    toggleSpinner(true);
     const inputField = document.getElementById("inputField");
     const searchText = inputField.value;
-
-    loadPhones(searchText);
-
+    loadPhones(searchText, dataLimit);
     inputField.value = "";
+};
+// search phones
+document.getElementById("btnSearch").addEventListener("click", function () {
+    processSearch(10);
 });
-loadPhones();
+
+// toggleSpinner
+const toggleSpinner = (isLoading) => {
+    const loader = document.getElementById("load_spinner");
+    if (isLoading) {
+        loader.classList.remove("d-none");
+    } else {
+        loader.classList.add("d-none");
+    }
+};
+// btn clicked by show all
+document.getElementById("btn_show_all").addEventListener("click", function () {
+    processSearch();
+});
+// loadPhones("apple");
