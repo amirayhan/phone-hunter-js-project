@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Phone_Hunter Javascript Project</title>
+
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+        <!-- custom css -->
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <!-- header section start -->
+        <section id="header">
+            <div class="container">
+                <h1 class="text-center">Welcome to Phone Hunter</h1>
+
+                <!-- search section start -->
+                <div class="input-group mb-3 m-auto" style="width: 500px">
+                    <input id="inputField" type="text" class="form-control" placeholder="Enter Phone Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                    <button class="input-group-text" id="btnSearch">Search</button>
+                </div>
+                <!-- search section end -->
+            </div>
+        </section>
+        <!-- header section end -->
+
+        <!-- all_phones section start -->
+        <section id="all_phones">
+            <div class="container">
+                <div id="phones_container" class="row row-cols-1 row-cols-md-3 g-4"></div>
+                <h3 id="no_phone_found_message" class="text-warning text-center pt-5 mt-3 d-none">No Phone Found</h3>
+            </div>
+        </section>
+        <!-- all_phones section end -->
+        <!-- scripts -->
+        <script src="js/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/phone-hunter.js"></script>
+    </body>
+</html>
